@@ -12,3 +12,41 @@ datasource db {
   provider = "cockroachdb"
   url      = env("DATABASE_URL")
 }
+
+model Owner {
+  ownerId  Int    @id @default(sequence())
+  fullName String
+  email    String @unique
+  address  String
+  dogs     Dog[]
+}
+
+model Dog {
+  dogId    Int       @id @default(sequence())
+  name     String
+  breed    String
+  owner    Owner     @relation(fields: [ownerId], references: [ownerId])
+  ownerId  Int
+  bookings Booking[]
+
+  @@unique([name, ownerId])
+}
+
+model Room {
+  roomId     Int       @id @default(sequence())
+  roomNumber Int       @unique
+  name       String
+  size       Int
+  bookings   Booking[]
+}
+
+model Booking {
+  bookingId Int       @id @default(sequence())
+  entryDate DateTime
+  exitDate  DateTime?
+  Dog       Dog       @relation(fields: [dogId], references: [dogId])
+  dogId     Int
+  Room      Room      @relation(fields: [roomId], references: [roomId])
+  roomId    Int
+  price     Int?
+}
