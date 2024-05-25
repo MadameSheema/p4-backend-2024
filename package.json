@@ -1,6 +1,6 @@
 {
   "name": "p4-backend-2024",
-  "module": "index.ts",
+  "module": "src/server.ts",
   "type": "module",
   "devDependencies": {
     "@types/bun": "latest",
