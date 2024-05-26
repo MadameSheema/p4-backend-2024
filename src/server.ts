@@ -3,6 +3,7 @@ import  morgan  from 'morgan';
 import  cors  from 'cors';
 import ownersRouter from './owners'
 import dogsRouter from './dogs';
+import roomsRouter from './rooms';
 import { defaultErrorHandler } from './errors';
 
 const app = express();
@@ -13,6 +14,7 @@ app.use(express.json());
 
 app.use('/owners', ownersRouter)
 app.use('/dogs', dogsRouter)
+app.use('/rooms', roomsRouter)
 
 app.use(defaultErrorHandler);
 

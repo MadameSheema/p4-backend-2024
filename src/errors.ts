@@ -17,9 +17,7 @@ const zodErrorMessage = (err: ZodError): string => {
   };
 
 export const defaultErrorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
-    console.log(err.name)
-    console.log(err.code)
-    console.log(err.message)
+    console.log(err);
     switch (err.name) {
       case 'NotFoundError':
         return send(res).notFound();

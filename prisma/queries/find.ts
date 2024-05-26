@@ -1,17 +1,6 @@
 import type { Dog } from '@prisma/client';
 import { db } from '../db'
 
-export const findRoom = async (roomNumber: number): Promise<{ roomId: number } | null> => {
-    return await db.room.findUnique({
-        select: {
-            roomId: true
-        },
-        where: {
-            roomNumber
-        }
-    });
-};
-
 export const findBooking = async (dogName: string, entryDate: string): Promise<{ bookingId: number } | null> => {
     return await db.booking.findFirst({
         select: {
