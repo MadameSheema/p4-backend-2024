@@ -1,6 +1,7 @@
 import  express from 'express';
 import  morgan  from 'morgan';
 import  cors  from 'cors';
+import ownersRouter from './owners'
 import dogsRouter from './dogs';
 import { defaultErrorHandler } from './errors';
 
@@ -10,6 +11,7 @@ app.use(cors());
 app.use(morgan('dev'))
 app.use(express.json());
 
+app.use('/owners', ownersRouter)
 app.use('/dogs', dogsRouter)
 
 app.use(defaultErrorHandler);

@@ -1,18 +1,6 @@
 import type { Dog } from '@prisma/client';
 import { db } from '../db'
 
-export const findOwner = async (email: string): Promise<{ ownerId: number, email: string } | null> => {
-    return await db.owner.findUnique({
-        select: {
-            email: true,
-            ownerId: true
-        },
-        where: {
-            email
-        }
-    });
-};
-
 export const findRoom = async (roomNumber: number): Promise<{ roomId: number } | null> => {
     return await db.room.findUnique({
         select: {
@@ -53,16 +41,7 @@ export const findAllBreeds = async (): Promise<{ breed: string }[]> => {
     });
 };
 
-export const findAllOwners = async (): Promise<{ fullName: string }[]> => {
-    return await db.owner.findMany({
-        select: {
-            fullName: true,
-        },
-        orderBy: {
-            fullName: 'asc'
-        },
-    });
-};
+
 
 export const findBookedRooms = async (date: string): Promise<{ name: string, roomNumber: number }[]> => {
     return await db.room.findMany({

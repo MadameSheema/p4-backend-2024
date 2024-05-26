@@ -1,13 +1,8 @@
 import type { Dog } from '@prisma/client';
 import { db } from '../db'
 
-type dogData = {
-    name: string,
-    breed: string,
-    ownerId: number,
-}; 
-
-type updateDogData = Partial<dogData>
+type DogData = Omit<Dog, 'dogId'>
+type UpdateDogData = Partial<DogData>
 
 export const findAllDogs = async (): Promise<Dog[]> => {
     return await db.dog.findMany();
@@ -17,13 +12,13 @@ export const findDog = async (dogId: number): Promise<Dog> => {
     return await db.dog.findUniqueOrThrow({ where: { dogId } });
 };
 
-export const createDog = async (data: dogData): Promise<Dog> => {
+export const createDog = async (data: DogData): Promise<Dog> => {
     return await db.dog.create({
             data
         });
 };
 
-export const updateDog = async (dogId: number, data: updateDogData) : Promise<Dog> => {
+export const updateDog = async (dogId: number, data: UpdateDogData) : Promise<Dog> => {
     return await db.dog.update({
         where: { dogId },
         data

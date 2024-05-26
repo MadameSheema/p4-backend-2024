@@ -1,16 +1,6 @@
 import type { Booking, Dog, Owner, Room } from '@prisma/client';
 import { db } from '../db'
 
-export const createOwner = async (fullName: string, email:string, address: string): Promise<Owner> => {
-    return await db.owner.create({
-            data: {
-                fullName,
-                email,
-                address
-            }
-        });
-};
-
 export const createRoom = async (name: string, roomNumber: number, size: number): Promise<Room> => {
     return await db.room.create({
         data: {
