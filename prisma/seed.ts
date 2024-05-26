@@ -1,5 +1,6 @@
 import { PrismaClientInitializationError, PrismaClientValidationError } from '@prisma/client/runtime/library';
-import { createOwner, createDog, createRoom, createBooking } from './queries/create';
+import { createOwner, createRoom, createBooking } from './queries/create';
+import { createDog } from './queries/dogs';
 
 const prismaCatchErrors = async (myMethod: any) => {
     try {
@@ -21,11 +22,11 @@ if (gloria)  ownerLog(gloria.fullName, gloria.ownerId);
 const ariadna = await prismaCatchErrors(createOwner('Ariadna F', 'ariadna@test.com', 'Sant Pere de Ribes'));
 if (ariadna) ownerLog(ariadna.fullName, ariadna.ownerId);
 
-const xoco = await prismaCatchErrors(createDog('Xoco', 'Mix', gloria.ownerId));
+const xoco = await prismaCatchErrors(createDog({ name:'Xoco', breed: 'Mix', ownerId: gloria.ownerId}));
 if (xoco) dogLog(xoco.name, xoco.dogId);
-const canino = await prismaCatchErrors(createDog('Canino', 'Tulear Cotton', ariadna.ownerId));
+const canino = await prismaCatchErrors(createDog({ name:'Canino', breed: 'Tulear Cotton', ownerId: ariadna.ownerId}));
 if (canino) dogLog(canino.name, canino.dogId);
-const avatar = await prismaCatchErrors(createDog('Avatar', 'Tulear Cotton', ariadna.ownerId));
+const avatar = await prismaCatchErrors(createDog({ name:'Avatar', breed: 'Tulear Cotton', ownerId:ariadna.ownerId }));
 if (avatar) dogLog(avatar.name, avatar.dogId);
 
 const jungleRoom = await prismaCatchErrors(createRoom('The Jungle', 700, 50));

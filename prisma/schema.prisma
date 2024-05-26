@@ -44,7 +44,7 @@ model Booking {
   bookingId Int       @id @default(sequence())
   entryDate DateTime
   exitDate  DateTime?
-  Dog       Dog       @relation(fields: [dogId], references: [dogId])
+  Dog       Dog       @relation(fields: [dogId], references: [dogId], onDelete: Cascade)
   dogId     Int
   Room      Room      @relation(fields: [roomId], references: [roomId])
   roomId    Int

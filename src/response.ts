@@ -11,6 +11,9 @@ enum HttpStatusCode {
 export const send = (res: ExpressResp) => {
     return {
         ok: (data: any) => res.status(HttpStatusCode.Ok).json(data),
+        createOk: (data: any) => res.status(HttpStatusCode.Created).send(data),
+        notFound: (msg: string = 'Not found.') => res.status(HttpStatusCode.NotFound).send(msg),
+        badRequest: (msg: string) => res.status(HttpStatusCode.BadRequest).send(msg),
         internalError: (msg: string) => res.status(HttpStatusCode.InternalServerError).send(msg), 
     }
 };

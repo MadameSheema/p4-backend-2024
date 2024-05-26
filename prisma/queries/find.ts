@@ -1,3 +1,4 @@
+import type { Dog } from '@prisma/client';
 import { db } from '../db'
 
 export const findOwner = async (email: string): Promise<{ ownerId: number, email: string } | null> => {
@@ -49,17 +50,6 @@ export const findAllBreeds = async (): Promise<{ breed: string }[]> => {
             name: 'asc',
         },
         distinct: 'breed'
-    });
-};
-
-export const findAllDogs = async (): Promise<{ name: string }[]> => {
-    return await db.dog.findMany({
-        select: {
-            name: true,
-        },
-        orderBy: {
-            name: 'asc'
-        },
     });
 };
 

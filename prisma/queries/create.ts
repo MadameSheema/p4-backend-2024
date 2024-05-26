@@ -11,16 +11,6 @@ export const createOwner = async (fullName: string, email:string, address: strin
         });
 };
 
-export const createDog = async (name: string, breed: string, ownerId: number): Promise<Dog> => {
-    return await db.dog.create({
-            data: {
-                name,
-                breed,
-                ownerId
-            }
-        });
-};
-
 export const createRoom = async (name: string, roomNumber: number, size: number): Promise<Room> => {
     return await db.room.create({
         data: {
