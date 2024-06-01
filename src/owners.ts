@@ -1,22 +1,10 @@
 import { Router } from 'express';
-import { z } from 'zod';
 import { catchErrors } from './errors';
 import { send } from './response';
 import { createOwner, deleteOwner, findAllOwners, findOwner, updateOwner } from '../prisma/queries/owners';
+import { idParamSchema, ownerBodySchema, putOwnerBodySchema } from './schemas';
 
 const router = Router();
-
-const idParamSchema = z.object({
-    id: z.coerce.number(),
-});
-
-const ownerBodySchema = z.object({
-    fullName: z.string(),
-    email: z.string(),
-    address: z.string(),
-}).strict();
-
-const putOwnerBodySchema = ownerBodySchema.partial();
 
 router.get('/', catchErrors(async (_req, res) => {
     const owners = await findAllOwners();

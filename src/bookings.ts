@@ -1,24 +1,10 @@
 import { Router } from 'express';
 import { send } from './response';
 import { catchErrors } from './errors';
-import { z } from 'zod';
 import { createBooking, deleteBooking, findAllBookings, findBooking, updateBooking } from '../prisma/queries/bookings';
+import { bookingBodySchema, idParamSchema, putBookingBodySchema } from './schemas';
 
 const router = Router();
-
-const idParamSchema = z.object({
-    id: z.coerce.number(),
-});
-
-const bookingBodySchema = z.object({
-    entryDate: z.coerce.date(),
-    exitDate: z.coerce.date(),
-    dogId: z.coerce.number(),
-    roomId: z.coerce.number(),
-    price: z.coerce.number(),
-}).strict();
-
-const putBookingBodySchema = bookingBodySchema.partial();
 
 router.get('/', catchErrors(async (_req, res) => {
     const booking = await findAllBookings();

@@ -1,8 +1,8 @@
 import type { Owner } from "@prisma/client";
 import { db } from "../db";
 
-type OwnerData = Omit<Owner, 'ownerId'>
-type UpdateOwnerData = Partial<OwnerData>
+type OwnerData = Omit<Owner, 'ownerId'>;
+type UpdateOwnerData = Partial<OwnerData>;
 
 export const findAllOwners = async (): Promise<Owner[]> => {
     return await db.owner.findMany();

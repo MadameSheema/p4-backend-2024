@@ -1,22 +1,10 @@
 import { Router } from 'express';
-import { z } from 'zod';
 import { catchErrors } from './errors';
 import { send } from './response';
 import { createRoom, deleteRoom, findAllRooms, findRoom, updateRoom } from '../prisma/queries/rooms';
+import { idParamSchema, roomBodySchema, putRoomBodySchema } from './schemas';
 
 const router = Router();
-
-const idParamSchema = z.object({
-    id: z.coerce.number(),
-});
-
-const roomBodySchema = z.object({
-    roomNumber: z.coerce.number(),
-    name: z.string(),
-    size: z.coerce.number(),
-}).strict();
-
-const putRoomBodySchema = roomBodySchema.partial();
 
 router.get('/', catchErrors(async (_req, res) => {
     const rooms = await findAllRooms();

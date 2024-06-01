@@ -1,22 +1,10 @@
 import { Router } from 'express';
 import { send } from './response';
 import { catchErrors } from './errors';
-import { z } from 'zod';
 import { findAllDogs, findDog, createDog, updateDog, deleteDog } from '../prisma/queries/dogs';
+import { dogBodySchema, idParamSchema, putDogBodySchema } from './schemas';
 
 const router = Router();
-
-const idParamSchema = z.object({
-    id: z.coerce.number(),
-});
-
-const dogBodySchema = z.object({
-    name: z.string(),
-    breed: z.string(),
-    ownerId: z.coerce.number(),
-}).strict();
-
-const putDogBodySchema = dogBodySchema.partial();
 
 router.get('/', catchErrors(async (_req, res) => {
     const dogs = await findAllDogs();
