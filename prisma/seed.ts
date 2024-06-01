@@ -1,8 +1,8 @@
 import { PrismaClientInitializationError, PrismaClientValidationError } from '@prisma/client/runtime/library';
-import { createBooking } from './queries/create';
 import { createDog } from './queries/dogs';
 import { createOwner } from './queries/owners';
 import { createRoom } from './queries/rooms';
+import { createBooking } from './queries/bookings';
 
 const prismaCatchErrors = async (myMethod: any) => {
     try {
@@ -38,11 +38,15 @@ if (gardenRoom) roomLog(gardenRoom.name, gardenRoom.roomId);
 const dreamRoom = await prismaCatchErrors(createRoom({ name: 'The Dream', roomNumber: 720, size: 60 }));
 if (dreamRoom) roomLog(dreamRoom.name, dreamRoom.roomId);
 
-const caninoEntry = new Date('2024-04-28T08:00').toISOString();
-const caninoExit = new Date('2024-05-03T17:00').toISOString();
-const avatarEntry = new Date('2024-04-28T08:00').toISOString();
+const caninoEntry = new Date('2024-04-28T08:00');
+const caninoExit = new Date('2024-05-03T17:00');
+const avatarEntry = new Date('2024-04-28T08:00');
 
-const caninoBooking = await prismaCatchErrors(createBooking(canino.dogId, dreamRoom.roomId, caninoEntry, caninoExit, 300));
+const caninoBooking = await prismaCatchErrors(createBooking({ dogId: canino.dogId, roomId: dreamRoom.roomId, entryDate: caninoEntry, exitDate: caninoExit, price: 300 }));
 if (caninoBooking) bookingLog(caninoBooking.bookingId);
-const avatarBooking = await prismaCatchErrors(createBooking(avatar.dogId, jungleRoom.roomId, avatarEntry));
+const avatarBooking = await prismaCatchErrors(createBooking({
+    dogId: avatar.dogId, roomId: jungleRoom.roomId, entryDate: avatarEntry,
+    exitDate: null,
+    price: null
+}));
 if (avatarBooking) bookingLog(avatarBooking.bookingId);
