@@ -61,7 +61,7 @@ export const deleteRooms = async (roomsIds: number[]): Promise<Room[]> => {
     const roomsToDelete = await db.room.findMany({
         where: { roomId: { in: roomsIds } }
     });
-    await db.booking.deleteMany({
+    await db.room.deleteMany({
         where: { roomId: {in: roomsIds} }
     });
     return roomsToDelete;

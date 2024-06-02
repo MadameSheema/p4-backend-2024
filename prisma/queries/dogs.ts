@@ -61,8 +61,8 @@ export const deleteDogs = async (dogsIds: number[]): Promise<Dog[]> => {
     const dogsToDelete = await db.dog.findMany({
         where: { dogId: { in: dogsIds } }
     });
-    await db.booking.deleteMany({
-        where: { bookingId: {in: dogsIds} }
+    await db.dog.deleteMany({
+        where: { dogId: {in: dogsIds} }
     });
     return dogsToDelete;
 };
