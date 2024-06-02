@@ -27,7 +27,7 @@ app.use(defaultErrorHandler);
 
 const { PORT } = process.env || 3000;
 
-const startServer = async () => {
+const startServer = () => {
   try {
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
