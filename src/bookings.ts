@@ -19,8 +19,8 @@ router.get('/:id', catchErrors(async (req, res) => {
 
 router.post('/bulk', catchErrors(async (req, res) => {
     const data = bookingBulkBodySchema.parse(req.body);
-    const booking = await createBookings(data);
-    send(res).createOk(booking);
+    const bookings = await createBookings(data);
+    send(res).createOk(bookings);
 }));
 
 router.post('/', catchErrors(async (req, res) => {
@@ -38,14 +38,14 @@ router.put('/bulk', catchErrors(async (req, res) => {
 router.put('/:id', catchErrors(async (req, res) => {
     const { id: bookingId } = idParamSchema.parse(req.params);
     const data = putBookingBodySchema.parse(req.body);
-    const bookings = await updateBooking(bookingId, data);
-    send(res).ok(bookings);
+    const booking = await updateBooking(bookingId, data);
+    send(res).ok(booking);
 }));
 
 router.delete('/bulk', catchErrors(async (req, res) => {
     const { ids } = bulkDelete.parse(req.body);
-    const booking = await deleteBookings(ids);
-    send(res).ok(booking);
+    const bookings = await deleteBookings(ids);
+    send(res).ok(bookings);
 }));
 
 router.delete('/:id', catchErrors(async (req, res) => {

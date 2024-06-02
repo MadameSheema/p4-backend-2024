@@ -19,8 +19,8 @@ router.get('/:id', catchErrors(async (req, res) => {
 
 router.post('/bulk', catchErrors(async (req, res) => {
     const data = dogBulkBodySchema.parse(req.body);
-    const dog = await createDogs(data);
-    send(res).createOk(dog);
+    const dogs = await createDogs(data);
+    send(res).createOk(dogs);
 }));
 
 router.post('/', catchErrors(async (req, res) => {
@@ -44,8 +44,8 @@ router.put('/:id', catchErrors(async (req, res) => {
 
 router.delete('/bulk', catchErrors(async (req, res) => {
     const { ids } = bulkDelete.parse(req.body);
-    const dog = await deleteDogs(ids);
-    send(res).ok(dog);
+    const dogs = await deleteDogs(ids);
+    send(res).ok(dogs);
 }));
 
 router.delete('/:id', catchErrors(async (req, res) => {

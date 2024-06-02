@@ -19,8 +19,8 @@ router.get('/:id', catchErrors(async (req, res) => {
 
 router.post('/bulk', catchErrors(async (req, res) => {
     const data = roomBulkBodySchema.parse(req.body);
-    const room = await createRooms(data);
-    send(res).createOk(room);
+    const rooms = await createRooms(data);
+    send(res).createOk(rooms);
 }));
 
 router.post('/', catchErrors(async (req, res) => {

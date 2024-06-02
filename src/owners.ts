@@ -26,16 +26,14 @@ router.post('/', catchErrors(async (req, res) => {
 router.put('/:id', catchErrors(async (req, res) => {
     const { id: ownerId } = idParamSchema.parse(req.params);
     const data = putOwnerBodySchema.parse(req.body);
-    const dog = await updateOwner(ownerId, data)
-    send(res).ok(dog);
+    const owner = await updateOwner(ownerId, data)
+    send(res).ok(owner);
 }));
 
 router.delete('/:id', catchErrors(async (req, res) => {
     const { id: ownerId } = idParamSchema.parse(req.params);
-    const dog = await deleteOwner(ownerId);
-    send(res).ok(dog);
+    const owner = await deleteOwner(ownerId);
+    send(res).ok(owner);
 }));
-
-
 
 export default router
