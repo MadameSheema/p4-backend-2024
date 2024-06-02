@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import { send } from './response';
 import { catchErrors } from './errors';
-import { createBooking, deleteBooking, findAllBookings, findBooking, updateBooking } from '../prisma/queries/bookings';
-import { bookingBodySchema, idParamSchema, putBookingBodySchema } from './schemas';
+import { createBooking, createBookings, deleteBooking, findAllBookings, findBooking, updateBooking } from '../prisma/queries/bookings';
+import { bookingBodySchema, bookingBulkBodySchema, idParamSchema, putBookingBodySchema } from './schemas';
 
 const router = Router();
 
@@ -17,9 +17,15 @@ router.get('/:id', catchErrors(async (req, res) => {
     send(res).ok(booking);
 }));
 
-router.post('/', catchErrors(async (req, res) => {
+router.post('/', catchErrors(async (req, res) => {  
     const data = bookingBodySchema.parse(req.body);
     const booking = await createBooking(data);
+    send(res).createOk(booking);
+}));
+
+router.post('/bulk', catchErrors(async (req, res) => {
+    const data = bookingBulkBodySchema.parse(req.body);
+    const booking = await createBookings(data);
     send(res).createOk(booking);
 }));
 

@@ -12,6 +12,8 @@ export const bookingBodySchema = z.object({
     price: z.coerce.number(),
 }).strict();
 
+export const bookingBulkBodySchema = z.array(bookingBodySchema);
+
 export const putBookingBodySchema = bookingBodySchema.partial();
 
 export const dogBodySchema = z.object({

@@ -16,6 +16,21 @@ export const createBooking = async (data: BookingData): Promise<Booking> => {
     return await db.booking.create({ data });
 };
 
+export const createBookings = async (data: BookingData[]): Promise<Booking[]> => {
+    await db.booking.createMany({ data });
+    const createdBookings = await db.booking.findMany({
+        where: {
+          OR: data.map(booking => ({
+            entryDate: booking.entryDate,
+            exitDate: booking.exitDate,
+            dogId: booking.dogId,
+            roomId: booking.roomId,
+          })),
+        },
+      });
+      return createdBookings;
+};
+
 export const updateBooking = async (bookingId: number, data: UpdateBookingData): Promise<Booking> => {
     return await db.booking.update({
         where: { bookingId },
