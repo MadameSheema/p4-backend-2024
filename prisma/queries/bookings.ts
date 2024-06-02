@@ -3,6 +3,10 @@ import { db } from '../db'
 
 type BookingData = Omit<Booking, 'bookingId'>;
 type UpdateBookingData = Partial<BookingData>;
+type BulkUpdateBookingData = {
+    id: number,
+    data: UpdateBookingData 
+}
 
 export const findAllBookings = async (): Promise<Booking[]> => {
     return await db.booking.findMany();
@@ -36,6 +40,16 @@ export const updateBooking = async (bookingId: number, data: UpdateBookingData):
         where: { bookingId },
         data
     });
+};
+
+export const updateBookings = async (bookingsUpdates: BulkUpdateBookingData[]): Promise<Booking[]> => {
+    const updatesPromises = bookingsUpdates.map(update => 
+        db.booking.update({
+          where: { bookingId: update.id },
+          data: update.data
+        })
+      );
+    return await Promise.all(updatesPromises);  
 };
 
 export const deleteBooking = async (bookingId: number): Promise<Booking> => {

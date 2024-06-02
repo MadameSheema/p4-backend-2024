@@ -16,6 +16,11 @@ export const bookingBulkBodySchema = z.array(bookingBodySchema);
 
 export const putBookingBodySchema = bookingBodySchema.partial();
 
+export const putBulkBookingBodySchema = z.array(z.object({
+    id: z.coerce.number(),
+    data: putBookingBodySchema
+}));
+
 export const dogBodySchema = z.object({
     name: z.string(),
     breed: z.string(),
