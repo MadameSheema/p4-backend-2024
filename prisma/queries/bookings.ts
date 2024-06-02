@@ -5,7 +5,7 @@ type BookingData = Omit<Booking, 'bookingId'>;
 type UpdateBookingData = Partial<BookingData>;
 type BulkUpdateBookingData = {
     id: number,
-    data: UpdateBookingData 
+    data: UpdateBookingData
 };
 
 export const findAllBookings = async (): Promise<Booking[]> => {
@@ -24,15 +24,15 @@ export const createBookings = async (data: BookingData[]): Promise<Booking[]> =>
     await db.booking.createMany({ data });
     const createdBookings = await db.booking.findMany({
         where: {
-          OR: data.map(booking => ({
-            entryDate: booking.entryDate,
-            exitDate: booking.exitDate,
-            dogId: booking.dogId,
-            roomId: booking.roomId,
-          })),
+            OR: data.map(booking => ({
+                entryDate: booking.entryDate,
+                exitDate: booking.exitDate,
+                dogId: booking.dogId,
+                roomId: booking.roomId,
+            })),
         },
-      });
-      return createdBookings;
+    });
+    return createdBookings;
 };
 
 export const updateBooking = async (bookingId: number, data: UpdateBookingData): Promise<Booking> => {
@@ -43,13 +43,13 @@ export const updateBooking = async (bookingId: number, data: UpdateBookingData):
 };
 
 export const updateBookings = async (bookingsUpdates: BulkUpdateBookingData[]): Promise<Booking[]> => {
-    const updatesPromises = bookingsUpdates.map(update => 
+    const updatesPromises = bookingsUpdates.map(update =>
         db.booking.update({
-          where: { bookingId: update.id },
-          data: update.data
+            where: { bookingId: update.id },
+            data: update.data
         })
-      );
-    return await Promise.all(updatesPromises);  
+    );
+    return await Promise.all(updatesPromises);
 };
 
 export const deleteBooking = async (bookingId: number): Promise<Booking> => {
@@ -63,7 +63,7 @@ export const deleteBookings = async (bookingsIds: number[]): Promise<Booking[]> 
         where: { bookingId: { in: bookingsIds } }
     });
     await db.booking.deleteMany({
-        where: { bookingId: {in: bookingsIds} }
+        where: { bookingId: { in: bookingsIds } }
     });
     return bookingsToDelete;
 };

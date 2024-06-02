@@ -17,21 +17,21 @@ export const findRoom = async (roomId: number): Promise<Room> => {
 };
 
 export const createRoom = async (data: RoomData): Promise<Room> => {
-    return await db.room.create({data});
+    return await db.room.create({ data });
 };
 
 export const createRooms = async (data: RoomData[]): Promise<Room[]> => {
     await db.room.createMany({ data });
     const createdRooms = await db.room.findMany({
         where: {
-          OR: data.map(room => ({
-            roomNumber: room.roomNumber,
-            name: room.name,
-            size: room.size,
-          })),
+            OR: data.map(room => ({
+                roomNumber: room.roomNumber,
+                name: room.name,
+                size: room.size,
+            })),
         },
-      });
-      return createdRooms;
+    });
+    return createdRooms;
 };
 
 export const updateRoom = async (roomId: number, data: UpdateRoomData): Promise<Room> => {
@@ -42,13 +42,13 @@ export const updateRoom = async (roomId: number, data: UpdateRoomData): Promise<
 };
 
 export const updateRooms = async (roomsUpdates: BulkUpdateRoomData[]): Promise<Room[]> => {
-    const updatesPromises = roomsUpdates.map(update => 
+    const updatesPromises = roomsUpdates.map(update =>
         db.room.update({
-          where: { roomId: update.id },
-          data: update.data
+            where: { roomId: update.id },
+            data: update.data
         })
-      );
-    return await Promise.all(updatesPromises);  
+    );
+    return await Promise.all(updatesPromises);
 };
 
 export const deleteRoom = async (roomId: number): Promise<Room> => {
@@ -62,7 +62,7 @@ export const deleteRooms = async (roomsIds: number[]): Promise<Room[]> => {
         where: { roomId: { in: roomsIds } }
     });
     await db.room.deleteMany({
-        where: { roomId: {in: roomsIds} }
+        where: { roomId: { in: roomsIds } }
     });
     return roomsToDelete;
 };

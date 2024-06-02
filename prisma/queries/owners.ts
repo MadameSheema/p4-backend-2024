@@ -17,24 +17,24 @@ export const findOwner = async (ownerId: number): Promise<Owner> => {
 };
 
 export const createOwner = async (data: OwnerData): Promise<Owner> => {
-    return await db.owner.create({data});
+    return await db.owner.create({ data });
 };
 
 export const createOwners = async (data: OwnerData[]): Promise<Owner[]> => {
     await db.owner.createMany({ data });
     const createdOwners = await db.owner.findMany({
         where: {
-          OR: data.map(owner => ({
-            fullName: owner.fullName,
-            email: owner.email,
-            address: owner.address,
-          })),
+            OR: data.map(owner => ({
+                fullName: owner.fullName,
+                email: owner.email,
+                address: owner.address,
+            })),
         },
-      });
-      return createdOwners;
+    });
+    return createdOwners;
 };
 
-export const updateOwner = async (ownerId: number, data: UpdateOwnerData) : Promise<Owner> => {
+export const updateOwner = async (ownerId: number, data: UpdateOwnerData): Promise<Owner> => {
     return await db.owner.update({
         where: { ownerId },
         data
@@ -42,13 +42,13 @@ export const updateOwner = async (ownerId: number, data: UpdateOwnerData) : Prom
 };
 
 export const updateOwners = async (ownerUpdates: BulkUpdateOwnerData[]): Promise<Owner[]> => {
-    const updatesPromises = ownerUpdates.map(update => 
+    const updatesPromises = ownerUpdates.map(update =>
         db.owner.update({
-          where: { ownerId: update.id },
-          data: update.data
+            where: { ownerId: update.id },
+            data: update.data
         })
-      );
-    return await Promise.all(updatesPromises);  
+    );
+    return await Promise.all(updatesPromises);
 };
 
 export const deleteOwner = async (ownerId: number): Promise<Owner> => {
@@ -62,7 +62,7 @@ export const deleteOwners = async (ownersIds: number[]): Promise<Owner[]> => {
         where: { ownerId: { in: ownersIds } }
     });
     await db.owner.deleteMany({
-        where: { ownerId: {in: ownersIds} }
+        where: { ownerId: { in: ownersIds } }
     });
     return ownersToDelete;
 };

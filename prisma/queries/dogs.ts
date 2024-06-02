@@ -24,14 +24,14 @@ export const createDogs = async (data: DogData[]): Promise<Dog[]> => {
     await db.dog.createMany({ data });
     const createdDogs = await db.dog.findMany({
         where: {
-          OR: data.map(dog => ({
-            name: dog.name,
-            breed: dog.breed,
-            ownerId: dog.ownerId
-          })),
+            OR: data.map(dog => ({
+                name: dog.name,
+                breed: dog.breed,
+                ownerId: dog.ownerId
+            })),
         },
-      });
-      return createdDogs;
+    });
+    return createdDogs;
 };
 
 export const updateDog = async (dogId: number, data: UpdateDogData): Promise<Dog> => {
@@ -42,13 +42,13 @@ export const updateDog = async (dogId: number, data: UpdateDogData): Promise<Dog
 };
 
 export const updateDogs = async (dogsUpdates: BulkUpdateDogData[]): Promise<Dog[]> => {
-    const updatesPromises = dogsUpdates.map(update => 
+    const updatesPromises = dogsUpdates.map(update =>
         db.dog.update({
-          where: { dogId: update.id },
-          data: update.data
+            where: { dogId: update.id },
+            data: update.data
         })
-      );
-    return await Promise.all(updatesPromises);  
+    );
+    return await Promise.all(updatesPromises);
 };
 
 export const deleteDog = async (dogId: number): Promise<Dog> => {
@@ -62,7 +62,7 @@ export const deleteDogs = async (dogsIds: number[]): Promise<Dog[]> => {
         where: { dogId: { in: dogsIds } }
     });
     await db.dog.deleteMany({
-        where: { dogId: {in: dogsIds} }
+        where: { dogId: { in: dogsIds } }
     });
     return dogsToDelete;
 };
