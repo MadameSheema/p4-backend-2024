@@ -21,6 +21,10 @@ export const putBulkBookingBodySchema = z.array(z.object({
     data: putBookingBodySchema
 }));
 
+export const putBulkDelete = z.object({
+    ids: z.array(z.coerce.number()),
+})
+
 export const dogBodySchema = z.object({
     name: z.string(),
     breed: z.string(),

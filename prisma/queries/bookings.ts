@@ -57,3 +57,13 @@ export const deleteBooking = async (bookingId: number): Promise<Booking> => {
         where: { bookingId }
     });
 };
+
+export const deleteBookings = async (bookingIds: number[]): Promise<Booking[]> => {
+    const bookingsToDelete = await db.booking.findMany({
+        where: { bookingId: { in: bookingIds } }
+    });
+    await db.booking.deleteMany({
+        where: { bookingId: {in: bookingIds} }
+    });
+    return bookingsToDelete;
+};
