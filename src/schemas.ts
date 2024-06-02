@@ -46,7 +46,14 @@ export const ownerBodySchema = z.object({
     address: z.string(),
 }).strict();
 
+export const ownerBulkBodySchema = z.array(ownerBodySchema);
+
 export const putOwnerBodySchema = ownerBodySchema.partial();
+
+export const putBulkOwnerBodySchema = z.array(z.object({
+    id: z.coerce.number(),
+    data: putOwnerBodySchema
+}));
 
 export const roomBodySchema = z.object({
     roomNumber: z.coerce.number(),
