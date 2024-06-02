@@ -7,12 +7,16 @@ import roomsRouter from './rooms';
 import bookingsRouter from './bookings'
 import { defaultErrorHandler } from './errors';
 
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('../swagger.json'); 
+
 const app = express();
 app.disable('x-powered-by');  
 
 app.use(cors());
 app.use(morgan('dev'))
 app.use(express.json());
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use('/owners', ownersRouter)
 app.use('/dogs', dogsRouter)

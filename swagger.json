@@ -1,0 +1,1039 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Dog Hotel API",
+      "version": "1.0.0",
+      "description": "API for managing bookings, dogs, owners and rooms in a dog hotel."
+    },
+    "tags": [
+        {
+          "name": "Bookings",
+          "description": "Operations related to bookings."
+        },
+        {
+            "name": "Dogs",
+            "description": "Operations related to dogs."
+        },
+        {
+            "name": "Owners",
+            "description": "Operations related to owners."
+        },
+        {
+            "name": "Rooms",
+            "description": "Operations related to rooms."
+        }
+    ],
+    "paths": {
+      "/bookings": {
+        "get": {
+          "summary": "Get all bookings.",
+          "tags": ["Bookings"],
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": { "$ref": "#/components/schemas/Booking" }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Create a new booking.",
+          "tags": ["Bookings"],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/BookingData" }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "201": {
+              "description": "Created.",
+              "content": {
+                "application/json": {
+                  "schema": { "$ref": "#/components/schemas/Booking" }
+                }
+              }
+            },
+            "400": {
+                "description": "Bad request"
+            }
+          }
+        }
+      },
+      "/bookings/bulk": {
+        "post": {
+          "summary": "Create multiple bookings",
+          "tags": ["Bookings"],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/BookingData" }
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "201": {
+              "description": "Created",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": { "$ref": "#/components/schemas/Booking" }
+                  }
+                }
+              }
+            },
+            "400": {
+                "description": "Bad request"
+            }
+          }
+        },
+        "put": {
+          "summary": "Bulk update bookings",
+          "tags": ["Bookings"],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/Booking" }
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": { "$ref": "#/components/schemas/Booking" }
+                  }
+                }
+              }
+            },
+            "400": {
+                "description": "Bad request"
+            },
+            "404": {
+                "description": "Not found"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Bulk delete bookings",
+          "tags": ["Bookings"],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ids": {
+                      "type": "array",
+                      "items": { "type": "integer" }
+                    }
+                  },
+                  "required": ["ids"]
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": { "$ref": "#/components/schemas/Booking" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/bookings/{id}": {
+        "get": {
+          "summary": "Get a booking by id",
+          "tags": ["Bookings"],
+          "parameters": [{
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer" }
+          }],
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": { "$ref": "#/components/schemas/Booking" }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request"
+            },
+            "404": {
+              "description": "Not found"
+            }
+          }
+        },
+        "put": {
+          "summary": "Update a booking by id",
+          "tags": ["Bookings"],
+          "parameters": [{
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer" }
+          }],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/BookingData" }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": { "$ref": "#/components/schemas/Booking" }
+                }
+              }
+            },
+            "400": {
+                "description": "Bad request"
+              },
+            "404": {
+              "description": "Booking not found"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete a booking by id",
+          "tags": ["Bookings"],
+          "parameters": [{
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer" }
+          }],
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": { "$ref": "#/components/schemas/Booking" }
+                }
+              }
+            },
+            "400": {
+                "description": "Bad request"
+              },
+            "404": {
+              "description": "Not found"
+            }
+          }
+        }
+      },
+      "/dogs": {
+        "get": {
+          "summary": "Get all dogs",
+          "tags": ["Dogs"],
+          "responses": {
+            "200": {
+              "description": "A list of dogs",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": { "$ref": "#/components/schemas/Dog" }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Create a new dog",
+          "tags": ["Dogs"],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/DogData" }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "201": {
+              "description": "Created",
+              "content": {
+                "application/json": {
+                  "schema": { "$ref": "#/components/schemas/Dog" }
+                }
+              }
+            },
+            "400": {
+                "description": "Bad request"
+            }
+          }
+        }
+      },
+      "/dogs/bulk": {
+        "post": {
+          "summary": "Create multiple dogs",
+          "tags": ["Dogs"],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/DogData" }
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "201": {
+              "description": "Created",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": { "$ref": "#/components/schemas/Dog" }
+                  }
+                }
+              }
+            },
+            "400": {
+                "description": "Bad request"
+            }
+          }
+        },
+        "put": {
+          "summary": "Bulk update dogs",
+          "tags": ["Dogs"],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/DogData" }
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": { "$ref": "#/components/schemas/Dog" }
+                  }
+                }
+              }
+            },
+            "400": {
+                "description": "Bad request"
+            },
+            "404": {
+                "description": "Not found"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Bulk delete dogs",
+          "tags": ["Dogs"],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ids": {
+                      "type": "array",
+                      "items": { "type": "integer" }
+                    }
+                  },
+                  "required": ["ids"]
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": { "$ref": "#/components/schemas/Dog" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/dogs/{id}": {
+        "get": {
+          "summary": "Get a dog by id",
+          "tags": ["Dogs"],
+          "parameters": [{
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer" }
+          }],
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": { "$ref": "#/components/schemas/Dog" }
+                }
+              }
+            },
+            "404": {
+              "description": "Not found"
+            }
+          }
+        },
+        "put": {
+          "summary": "Update a dog by id",
+          "tags": ["Dogs"],
+          "parameters": [{
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer" }
+          }],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/DogData" }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": { "$ref": "#/components/schemas/Dog" }
+                }
+              }
+            },
+            "400": {
+                "description": "Bad request"
+              },
+            "404": {
+              "description": "Not found"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete a dog by id",
+          "tags": ["Dogs"],
+          "parameters": [{
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer" }
+          }],
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": { "$ref": "#/components/schemas/Dog" }
+                }
+              }
+            },
+            "404": {
+              "description": "Not found"
+            }
+          }
+        }
+      },
+      "/owners": {
+        "get": {
+          "summary": "Get all owners",
+          "tags": ["Owners"],
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": { "$ref": "#/components/schemas/Owner" }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Create a new owner",
+          "tags": ["Owners"],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/OwnerData" }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "201": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": { "$ref": "#/components/schemas/Owner" }
+                }
+              }
+            },
+            "400": {
+                "description": "Bad request"
+            }
+          }
+        }
+      },
+      "/owners/bulk": {
+        "post": {
+          "summary": "Create multiple owners",
+          "tags": ["Owners"],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/OwnerData" }
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "201": {
+              "description": "Created",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": { "$ref": "#/components/schemas/Owner" }
+                  }
+                }
+              }
+            },
+            "400": {
+                "description": "Bad request"
+            }
+          }
+        },
+        "put": {
+          "summary": "Bulk update owners",
+          "tags": ["Owners"],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/OwnerData" }
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": { "$ref": "#/components/schemas/Owner" }
+                  }
+                }
+              }
+            },
+            "400": {
+                "description": "Bad request"
+            },
+            "404": {
+                "description": "Not found"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Bulk delete owners",
+          "tags": ["Owners"],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ids": {
+                      "type": "array",
+                      "items": { "type": "integer" }
+                    }
+                  },
+                  "required": ["ids"]
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": { "$ref": "#/components/schemas/Owner" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/owners/{id}": {
+        "get": {
+          "summary": "Get an owner by id",
+          "tags": ["Owners"],
+          "parameters": [{
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer" }
+          }],
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": { "$ref": "#/components/schemas/Owner" }
+                }
+              }
+            },
+            "400": {
+                "description": "Bad request"
+              },
+            "404": {
+              "description": "Not found"
+            }
+          }
+        },
+        "put": {
+          "summary": "Update an owner by id",
+          "tags": ["Owners"],
+          "parameters": [{
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer" }
+          }],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/UpdateOwnerData" }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": { "$ref": "#/components/schemas/Owner" }
+                }
+              }
+            },
+            "400": {
+                "description": "Bad request"
+              },
+            "404": {
+              "description": "Not found"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete an owner by id",
+          "tags": ["Owners"],
+          "parameters": [{
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer" }
+          }],
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": { "$ref": "#/components/schemas/Owner" }
+                }
+              }
+            },
+            "400": {
+                "description": "Bad request"
+              },
+            "404": {
+              "description": "Owner not found"
+            }
+          }
+        }
+      },
+      "/rooms": {
+        "get": {
+          "summary": "Get all rooms",
+          "tags": ["Rooms"],
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": { "$ref": "#/components/schemas/Room" }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "summary": "Create a new room",
+          "tags": ["Rooms"],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/RoomData" }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "201": {
+              "description": "Created",
+              "content": {
+                "application/json": {
+                  "schema": { "$ref": "#/components/schemas/Room" }
+                }
+              }
+            },
+            "400": {
+                "description": "Bad request"
+            }
+          }
+        }
+      },
+      "/rooms/bulk": {
+        "post": {
+          "summary": "Create multiple rooms",
+          "tags": ["Rooms"],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/RoomData" }
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "201": {
+              "description": "Created",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": { "$ref": "#/components/schemas/Room" }
+                  }
+                }
+              }
+            },
+            "400": {
+                "description": "Bad request"
+            }
+          }
+        },
+        "put": {
+          "summary": "Bulk update rooms",
+          "tags": ["Rooms"],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": { "$ref": "#/components/schemas/RoomData" }
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": { "$ref": "#/components/schemas/Room" }
+                  }
+                }
+              }
+            },
+            "400": {
+                "description": "Bad request"
+            },
+            "404": {
+                "description": "Not found"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Bulk delete rooms",
+          "tags": ["Rooms"],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ids": {
+                      "type": "array",
+                      "items": { "type": "integer" }
+                    }
+                  },
+                  "required": ["ids"]
+                }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": { "$ref": "#/components/schemas/Room" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "/rooms/{id}": {
+        "get": {
+          "summary": "Get a room by id",
+          "tags": ["Rooms"],
+          "parameters": [{
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer" }
+          }],
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": { "$ref": "#/components/schemas/Room" }
+                }
+              }
+            },
+            "400": {
+                "description": "Bad request"
+              },
+            "404": {
+              "description": "Room not found"
+            }
+          }
+        },
+        "put": {
+          "summary": "Update a room by id",
+          "tags": ["Rooms"],
+          "parameters": [{
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer" }
+          }],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/UpdateRoomData" }
+              }
+            },
+            "required": true
+          },
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": { "$ref": "#/components/schemas/Room" }
+                }
+              }
+            },
+            "400": {
+                "description": "Bad request"
+            },
+            "404": {
+              "description": "Not found"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete a room by id",
+          "tags": ["Rooms"],
+          "parameters": [{
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "integer" }
+          }],
+          "responses": {
+            "200": {
+              "description": "Ok",
+              "content": {
+                "application/json": {
+                  "schema": { "$ref": "#/components/schemas/Room" }
+                }
+              }
+            },
+            "400": {
+                "description": "Bad request"
+            },
+            "404": {
+              "description": "Not found"
+            }
+          }
+        }
+      }
+    },
+    "components": {
+      "schemas": {
+        "Dog": {
+          "type": "object",
+          "properties": {
+            "dogId": { "type": "integer" },
+            "name": { "type": "string" },
+            "breed": { "type": "string" },
+            "ownerId": { "type": "integer" }
+          },
+          "required": ["dogId", "name", "breed", "ownerId"]
+        },
+        "Owner": {
+          "type": "object",
+          "properties": {
+            "ownerId": { "type": "integer" },
+            "fullName": { "type": "string" },
+            "address": { "type": "string" },
+            "email": { "type": "string" }
+          },
+          "required": ["ownerId", "fullName", "address", "email"]
+        },
+        "Room": {
+          "type": "object",
+          "properties": {
+            "roomId": { "type": "integer" },
+            "number": { "type": "integer" },
+            "name": { "types": "string" },
+            "size": { "type": "string" }
+          },
+          "required": ["roomId", "number", "name", "size"]
+        },
+        "Booking": {
+          "type": "object",
+          "properties": {
+            "bookingId": { "type": "integer" },
+            "dogId": { "type": "integer" },
+            "roomId": { "type": "integer" },
+            "entryDate": { "type": "string", "format": "date" },
+            "exitDate": { "type": "string", "format": "date" },
+            "price": { "type": "integer" }
+          },
+          "required": ["bookingId", "dogId", "roomId", "entryDate", "exitDate", "price"]
+        },
+        "DogData": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "breed": { "type": "string" },
+              "ownerId": { "type": "integer" }
+            },
+            "required": ["name", "breed", "ownerId"]
+          },
+          "OwnerData": {
+            "type": "object",
+            "properties": {
+              "fullName": { "type": "string" },
+              "address": { "type": "string" },
+              "email": { "type": "string" }
+            },
+            "required": ["fullName", "address", "email"]
+          },
+          "RoomData": {
+            "type": "object",
+            "properties": {
+              "number": { "type": "integer" },
+              "name": { "types": "string" },
+              "size": { "type": "string" }
+            },
+            "required": ["number", "name", "size"]
+          },
+          "BookingData": {
+            "type": "object",
+            "properties": {
+              "dogId": { "type": "integer" },
+              "roomId": { "type": "integer" },
+              "entryDate": { "type": "string", "format": "date" },
+              "exitDate": { "type": "string", "format": "date" },
+              "price": { "type": "integer" }
+            },
+            "required": ["dogId", "roomId", "entryDate", "exitDate", "price"]
+          }
+      }
+    }
+  }
+  
