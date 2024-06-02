@@ -54,4 +54,11 @@ export const roomBodySchema = z.object({
     size: z.coerce.number(),
 }).strict();
 
+export const roomBulkBodySchema = z.array(roomBodySchema);
+
 export const putRoomBodySchema = roomBodySchema.partial();
+
+export const putBulkRoomBodySchema = z.array(z.object({
+    id: z.coerce.number(),
+    data: putRoomBodySchema
+}));

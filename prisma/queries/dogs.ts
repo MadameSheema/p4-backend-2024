@@ -6,7 +6,7 @@ type UpdateDogData = Partial<DogData>;
 type BulkUpdateDogData = {
     id: number,
     data: UpdateDogData
-}
+};
 
 export const findAllDogs = async (): Promise<Dog[]> => {
     return await db.dog.findMany();

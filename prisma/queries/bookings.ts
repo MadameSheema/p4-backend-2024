@@ -6,7 +6,7 @@ type UpdateBookingData = Partial<BookingData>;
 type BulkUpdateBookingData = {
     id: number,
     data: UpdateBookingData 
-}
+};
 
 export const findAllBookings = async (): Promise<Booking[]> => {
     return await db.booking.findMany();
