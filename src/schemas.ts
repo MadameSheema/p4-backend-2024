@@ -4,6 +4,10 @@ export const idParamSchema = z.object({
     id: z.coerce.number(),
 });
 
+export const bulkDelete = z.object({
+    ids: z.array(z.coerce.number()),
+})
+
 export const bookingBodySchema = z.object({
     entryDate: z.coerce.date(),
     exitDate: z.coerce.date(),
@@ -21,17 +25,20 @@ export const putBulkBookingBodySchema = z.array(z.object({
     data: putBookingBodySchema
 }));
 
-export const putBulkDelete = z.object({
-    ids: z.array(z.coerce.number()),
-})
-
 export const dogBodySchema = z.object({
     name: z.string(),
     breed: z.string(),
     ownerId: z.coerce.number(),
 }).strict();
 
+export const dogBulkBodySchema = z.array(dogBodySchema);
+
 export const putDogBodySchema = dogBodySchema.partial();
+
+export const putBulkDogBodySchema = z.array(z.object({
+    id: z.coerce.number(),
+    data: putDogBodySchema
+}));
 
 export const ownerBodySchema = z.object({
     fullName: z.string(),

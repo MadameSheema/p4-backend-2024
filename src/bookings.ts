@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { send } from './response';
 import { catchErrors } from './errors';
 import { createBooking, createBookings, deleteBooking, deleteBookings, findAllBookings, findBooking, updateBooking, updateBookings } from '../prisma/queries/bookings';
-import { bookingBodySchema, bookingBulkBodySchema, idParamSchema, putBookingBodySchema, putBulkBookingBodySchema, putBulkDelete } from './schemas';
+import { bookingBodySchema, bookingBulkBodySchema, idParamSchema, putBookingBodySchema, putBulkBookingBodySchema, bulkDelete } from './schemas';
 
 const router = Router();
 
@@ -31,19 +31,19 @@ router.post('/', catchErrors(async (req, res) => {
 
 router.put('/bulk', catchErrors(async (req, res) => {
     const data = putBulkBookingBodySchema.parse(req.body);
-    const booking = await updateBookings(data);
-    send(res).ok(booking);
+    const bookings = await updateBookings(data);
+    send(res).ok(bookings);
 }));
 
 router.put('/:id', catchErrors(async (req, res) => {
     const { id: bookingId } = idParamSchema.parse(req.params);
     const data = putBookingBodySchema.parse(req.body);
-    const booking = await updateBooking(bookingId, data);
-    send(res).ok(booking);
+    const bookings = await updateBooking(bookingId, data);
+    send(res).ok(bookings);
 }));
 
 router.delete('/bulk', catchErrors(async (req, res) => {
-    const { ids } = putBulkDelete.parse(req.body);
+    const { ids } = bulkDelete.parse(req.body);
     const booking = await deleteBookings(ids);
     send(res).ok(booking);
 }));
