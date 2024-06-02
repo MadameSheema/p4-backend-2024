@@ -1,0 +1,591 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "dog-hotel",
+    "dateExported": "2024-06-02T17:44:00.606Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "54daf31d-a341-4f32-9e85-f38405b9bb03",
+            "name": "bookings",
+            "containerId": "",
+            "created": "2024-06-02T11:01:40.491Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "56b5747d-28f3-4e6e-beb5-0ed0e7f5b1d4",
+            "name": "dogs",
+            "containerId": "",
+            "created": "2024-06-02T11:21:52.793Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "5afb9d92-da92-4f1b-b0b1-4fed3458ff3f",
+            "name": "owners",
+            "containerId": "",
+            "created": "2024-06-02T11:33:01.767Z",
+            "sortNum": 30000
+        },
+        {
+            "_id": "7615093f-f8e7-40aa-903c-4e02893e4ecf",
+            "name": "rooms",
+            "containerId": "",
+            "created": "2024-06-02T11:48:25.766Z",
+            "sortNum": 40000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "928f9f16-7175-4308-b147-4b96f8ee932f",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "54daf31d-a341-4f32-9e85-f38405b9bb03",
+            "name": "all bookings",
+            "url": "/bookings",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-06-02T10:48:54.982Z",
+            "modified": "2024-06-02T10:49:02.024Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "87cd6187-2b32-4dde-9862-26a2ecaf8b63",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "56b5747d-28f3-4e6e-beb5-0ed0e7f5b1d4",
+            "name": "all dogs",
+            "url": "/dogs",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-06-02T11:21:52.793Z",
+            "modified": "2024-06-02T11:22:30.792Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "54cbe6f8-1e51-4df9-8308-d1be9588aac0",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "5afb9d92-da92-4f1b-b0b1-4fed3458ff3f",
+            "name": "all owners",
+            "url": "/owners",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-06-02T11:33:01.767Z",
+            "modified": "2024-06-02T11:33:26.125Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "0e696111-95d3-4124-b7ce-1c7d7cd369e6",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "7615093f-f8e7-40aa-903c-4e02893e4ecf",
+            "name": "rooms",
+            "url": "/rooms",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-06-02T11:48:25.767Z",
+            "modified": "2024-06-02T11:48:43.556Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "88d7244c-872b-4a7f-ba86-d17a97b98224",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "54daf31d-a341-4f32-9e85-f38405b9bb03",
+            "name": "booking by id",
+            "url": "/bookings/1",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-06-02T10:52:33.654Z",
+            "modified": "2024-06-02T16:21:15.639Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "ff207f6e-1e26-419c-8e79-2c9bb716fa98",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "56b5747d-28f3-4e6e-beb5-0ed0e7f5b1d4",
+            "name": "owner by id",
+            "url": "/dogs/1",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-06-02T11:21:52.794Z",
+            "modified": "2024-06-02T11:22:48.849Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "42d0fc81-f670-4665-9d26-2e8ce62b03c8",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "5afb9d92-da92-4f1b-b0b1-4fed3458ff3f",
+            "name": "owner by id",
+            "url": "/owners/1",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-06-02T11:33:01.768Z",
+            "modified": "2024-06-02T11:33:50.607Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "ca4de466-6cb1-45a4-b6d5-4b2137d2d056",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "7615093f-f8e7-40aa-903c-4e02893e4ecf",
+            "name": "room by id",
+            "url": "/rooms/2",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-06-02T11:48:25.768Z",
+            "modified": "2024-06-02T11:49:06.297Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "9dfb9e3c-5cfc-499c-bac8-5d59460293ed",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "54daf31d-a341-4f32-9e85-f38405b9bb03",
+            "name": "bulk bookings",
+            "url": "/bookings/bulk",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-06-02T10:55:10.074Z",
+            "modified": "2024-06-02T10:58:37.006Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "[\n  {\n    \"entryDate\": \"2025-04-28T06:00:00.000Z\",\n    \"exitDate\": \"2025-05-03T15:00:00.000Z\",\n    \"dogId\": 1,\n    \"roomId\": 1,\n    \"price\": 150\n  },\n  {\n    \"entryDate\": \"2025-04-28T06:00:00.000Z\",\n    \"exitDate\": null,\n    \"dogId\": 2,\n    \"roomId\": 2,\n    \"price\": null\n  }\n]",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "719cd939-a0fb-47f0-9ced-a26e36662f6a",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "56b5747d-28f3-4e6e-beb5-0ed0e7f5b1d4",
+            "name": "bulk dogs",
+            "url": "/dogs/bulk",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-06-02T11:21:52.795Z",
+            "modified": "2024-06-02T11:24:57.146Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "[\n  {\n    \"name\": \"Latte\",\n    \"breed\": \"Mix\",\n    \"ownerId\": 1\n  },\n  {\n    \"name\": \"Fuhur\",\n    \"breed\": \"Labrador\",\n    \"ownerId\": 2\n  }\n]",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "0d207cdc-cf84-43d2-aabf-34dea0e84e06",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "5afb9d92-da92-4f1b-b0b1-4fed3458ff3f",
+            "name": "bulk owners",
+            "url": "/owners/bulk",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-06-02T11:33:01.769Z",
+            "modified": "2024-06-02T11:42:00.644Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "[\n  {\n    \"fullName\": \"Jose Luis G.\",\n    \"email\": \"jl@test.com\",\n    \"address\": \"Sant Pere de Ribes\"\n  },\n  {\n    \"fullName\": \"Victor G.\",\n    \"email\": \"victor@test.com\",\n    \"address\": \"Sant Pere de Ribes\"\n  }\n]",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "dd67dfd0-d55e-496f-834e-f70d56c8d621",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "7615093f-f8e7-40aa-903c-4e02893e4ecf",
+            "name": "bulk rooms",
+            "url": "/rooms/bulk",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-06-02T11:48:25.769Z",
+            "modified": "2024-06-02T11:55:28.811Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "[\n  {\n    \"roomNumber\": 730,\n    \"name\": \"The beach\",\n    \"size\": 55\n  },\n  {\n    \"roomNumber\": 740,\n    \"name\": \"The forest\",\n    \"size\": 70\n  }\n]",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "eed30ceb-6d57-46d1-b0c1-88c88afd1906",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "54daf31d-a341-4f32-9e85-f38405b9bb03",
+            "name": "booking",
+            "url": "/bookings",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-06-02T11:00:30.662Z",
+            "modified": "2024-06-02T11:01:22.758Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"entryDate\": \"2025-05-28T06:00:00.000Z\",\n    \"exitDate\": \"2025-06-03T15:00:00.000Z\",\n    \"dogId\": 2,\n    \"roomId\": 2,\n    \"price\": 400\n  }",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "52e591fb-5e34-48a8-b4a5-6a25fa98cb37",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "56b5747d-28f3-4e6e-beb5-0ed0e7f5b1d4",
+            "name": "dog",
+            "url": "/dogs",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-06-02T11:21:52.796Z",
+            "modified": "2024-06-02T11:25:56.375Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "  {\n    \"name\": \"Mango\",\n    \"breed\": \"Mix\",\n    \"ownerId\": 1\n  }",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "d8395adb-3612-4eed-b7e1-0edc34c995b8",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "5afb9d92-da92-4f1b-b0b1-4fed3458ff3f",
+            "name": "owner",
+            "url": "/owners",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-06-02T11:33:01.770Z",
+            "modified": "2024-06-02T11:46:28.054Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "  {\n    \"fullName\": \"Ana G.\",\n    \"email\": \"ana@test.com\",\n    \"address\": \"Sant Pere de Ribes\"\n  }",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "92110f76-6738-4b89-a047-ed09dbcc1654",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "7615093f-f8e7-40aa-903c-4e02893e4ecf",
+            "name": "room",
+            "url": "/rooms",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-06-02T11:48:25.770Z",
+            "modified": "2024-06-02T11:56:10.578Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "  {\n    \"roomNumber\": 750,\n    \"name\": \"The lake\",\n    \"size\": 65\n  }",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "7f93d8fa-b709-479d-88fa-16c7547d4483",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "54daf31d-a341-4f32-9e85-f38405b9bb03",
+            "name": "bulk bookings",
+            "url": "/bookings/bulk",
+            "method": "PUT",
+            "sortNum": 70000,
+            "created": "2024-06-02T11:06:36.330Z",
+            "modified": "2024-06-02T17:34:19.593Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "[\n  {\n    \"id\": 2,\n    \"data\": {\n       \"price\": 50 \n    }\n  },\n  {\n    \"id\": 2,\n    \"data\": {\n      \"price\": 25\n    }\n  }\n]",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "86fb77e6-4467-4d6b-aa10-51d39b157737",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "56b5747d-28f3-4e6e-beb5-0ed0e7f5b1d4",
+            "name": "bulk dogs",
+            "url": "/dogs/bulk",
+            "method": "PUT",
+            "sortNum": 70000,
+            "created": "2024-06-02T11:21:52.797Z",
+            "modified": "2024-06-02T11:28:15.790Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "[\n  {\n    \"id\": 4,\n    \"data\": {\n      \"name\": \"Late\"\n    }\n  },\n  {\n    \"id\": 5,\n    \"data\": {\n      \"ownerId\": 1\n    }\n  }\n]",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "58919c1f-ad6d-4bc9-9503-e02f8979259e",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "5afb9d92-da92-4f1b-b0b1-4fed3458ff3f",
+            "name": "bulk owners",
+            "url": "/owners/bulk",
+            "method": "PUT",
+            "sortNum": 70000,
+            "created": "2024-06-02T11:33:01.771Z",
+            "modified": "2024-06-02T11:45:36.074Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "[\n  {\n    \"id\": 3,\n    \"data\": {\n      \"email\": \"jl@gmail.com\"\n    }\n  },\n  {\n    \"id\": 4,\n    \"data\": {\n      \"address\": \"Blaumar Street, St Pere de Ribes\" \n    }\n  }\n]",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "732fdcd3-41cc-40a9-9ae4-52456a0f98e1",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "7615093f-f8e7-40aa-903c-4e02893e4ecf",
+            "name": "bulk rooms",
+            "url": "/rooms/bulk",
+            "method": "PUT",
+            "sortNum": 70000,
+            "created": "2024-06-02T11:48:25.771Z",
+            "modified": "2024-06-02T11:59:36.588Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "[\n  {\n    \"id\": 4,\n    \"data\": {\n      \"name\": \"The Beach\"\n    }\n  },\n  {\n    \"id\": 5,\n    \"data\": {\n      \"name\": \"The Forest\" \n    }\n  }\n]",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "3a0ccf7d-75fc-41bc-aca1-1f84e8c43a99",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "54daf31d-a341-4f32-9e85-f38405b9bb03",
+            "name": "booking",
+            "url": "/bookings/1",
+            "method": "PUT",
+            "sortNum": 80000,
+            "created": "2024-06-02T11:15:20.971Z",
+            "modified": "2024-06-02T11:16:11.902Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"dogId\": 1\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "798a5a05-64f9-46eb-8376-e28a2ef180ac",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "56b5747d-28f3-4e6e-beb5-0ed0e7f5b1d4",
+            "name": "dog",
+            "url": "/dogs/5",
+            "method": "PUT",
+            "sortNum": 80000,
+            "created": "2024-06-02T11:21:52.798Z",
+            "modified": "2024-06-02T11:28:46.027Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"ownerId\": 2\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "4c63ea9c-d255-410c-9dcb-6aaf1e093d16",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "5afb9d92-da92-4f1b-b0b1-4fed3458ff3f",
+            "name": "owner",
+            "url": "/owners/5",
+            "method": "PUT",
+            "sortNum": 80000,
+            "created": "2024-06-02T11:33:01.772Z",
+            "modified": "2024-06-02T11:47:23.059Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"fullName\": \"Ana G. F.\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "5d80060b-552b-466f-83ba-d081ac897a7d",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "7615093f-f8e7-40aa-903c-4e02893e4ecf",
+            "name": "room",
+            "url": "/rooms/4",
+            "method": "PUT",
+            "sortNum": 80000,
+            "created": "2024-06-02T11:48:25.772Z",
+            "modified": "2024-06-02T12:00:18.861Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"roomNumber\": \"800\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "bc05234e-81a2-4110-bd77-febf42147be2",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "54daf31d-a341-4f32-9e85-f38405b9bb03",
+            "name": "bulk bookings",
+            "url": "/bookings/bulk",
+            "method": "DELETE",
+            "sortNum": 90000,
+            "created": "2024-06-02T11:20:08.760Z",
+            "modified": "2024-06-02T11:20:57.571Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"ids\": [3,4]\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "548f71f9-2529-4013-a717-9cfdaa0a61fc",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "56b5747d-28f3-4e6e-beb5-0ed0e7f5b1d4",
+            "name": "bulk dogs",
+            "url": "/dogs/bulk",
+            "method": "DELETE",
+            "sortNum": 90000,
+            "created": "2024-06-02T11:21:52.799Z",
+            "modified": "2024-06-02T11:29:11.968Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"ids\": [4,5]\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "c1b6d715-f65b-4650-bb27-9620e2762724",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "5afb9d92-da92-4f1b-b0b1-4fed3458ff3f",
+            "name": "bulk owners",
+            "url": "/owners/bulk",
+            "method": "DELETE",
+            "sortNum": 90000,
+            "created": "2024-06-02T11:33:01.773Z",
+            "modified": "2024-06-02T11:47:52.144Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"ids\": [3,4]\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "a10f142b-b6f5-4199-933b-4bf852278731",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "7615093f-f8e7-40aa-903c-4e02893e4ecf",
+            "name": "bulk rooms",
+            "url": "/rooms/bulk",
+            "method": "DELETE",
+            "sortNum": 90000,
+            "created": "2024-06-02T11:48:25.773Z",
+            "modified": "2024-06-02T12:01:18.193Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"ids\": [4,5]\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "d07fa264-262e-4691-83c0-06f76f2d5b94",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "54daf31d-a341-4f32-9e85-f38405b9bb03",
+            "name": "booking",
+            "url": "/bookings/5",
+            "method": "DELETE",
+            "sortNum": 100000,
+            "created": "2024-06-02T11:21:08.609Z",
+            "modified": "2024-06-02T11:21:34.577Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "62f6be4c-228f-4033-be14-d5c43cf0531b",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "56b5747d-28f3-4e6e-beb5-0ed0e7f5b1d4",
+            "name": "dog",
+            "url": "/dogs/6",
+            "method": "DELETE",
+            "sortNum": 100000,
+            "created": "2024-06-02T11:21:52.800Z",
+            "modified": "2024-06-02T11:29:20.170Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "987f40be-7608-4688-bbc8-7df52fb61442",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "5afb9d92-da92-4f1b-b0b1-4fed3458ff3f",
+            "name": "owner",
+            "url": "/owners/5",
+            "method": "DELETE",
+            "sortNum": 100000,
+            "created": "2024-06-02T11:33:01.774Z",
+            "modified": "2024-06-02T11:48:10.501Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "5753bc98-729f-4b1b-bcec-06dcb8363149",
+            "colId": "7c42c4da-eba1-485f-afeb-c9192e8670b3",
+            "containerId": "7615093f-f8e7-40aa-903c-4e02893e4ecf",
+            "name": "room",
+            "url": "/rooms/3",
+            "method": "DELETE",
+            "sortNum": 100000,
+            "created": "2024-06-02T11:48:25.774Z",
+            "modified": "2024-06-02T12:01:43.766Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "http://localhost:8888"
+        }
+    }
+}
